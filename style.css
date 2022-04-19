@@ -1,0 +1,138 @@
+*{
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+}
+
+.mainContainer{
+  height: 100vh;
+  width: 100vw;
+  background-color: #152057;
+  color: white;
+  display: grid;
+  grid-template-rows: 20% 80%;
+}
+
+/* headerOptionsContainer */
+.headerOptionsContainer {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.optionsContainer{
+  background-color: #0d1022;
+  border-radius:15px;
+  width: 30%;
+  height: 60%;
+  display: grid;
+  grid-template-rows: 30% 70%;
+}
+
+.startText, .buttonsContainer {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  
+}
+
+.buttonsContainer {
+  grid-template-columns: 1fr 1fr;
+}
+
+.button {
+  width:85%;
+  height: 60%;
+  background-color: #152057;
+  border-radius: 15px;
+}
+
+/* gameContainer */
+.gameContainer {
+  display: grid;
+  grid-template-rows: 5% 75% 20%;
+  justify-items: center;
+}
+
+.statusContainer, .ticTacToeContainer, .scoresContainer {
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* statusContainer */
+.logoContainer, .turnContainer, .backContainer {
+  display: grid;
+}
+
+.logoContainer {
+  align-items: center;
+}
+
+.turnContainer {
+  justify-items: center;
+}
+
+.buttonTurn {
+  background-color: #0d1022;
+  border-radius: 15px;
+  height: 100%;
+  width: 75%;
+}
+
+.backContainer {
+  justify-items: end;
+}
+
+.buttonBack {
+  color: gray;
+  width: 55%;
+  border-radius: 15px;
+}
+
+/* ticTacToeContainer */
+.ticTacToeContainer {
+  padding: 1% 0;
+  display: grid;
+  grid-gap: 1.5%;
+}
+
+
+.gameBox {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  background-color: #0d1022;
+  border-radius: 15px;
+}
+
+/* scoresContainer*/
+.scoresContainer {
+  display: grid;
+  grid-gap: 1.5%;
+}
+
+.boxScore {
+  color: #152057;
+  height: 30%;
+  border-radius: 15px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.boxScore:nth-child(1) {
+  background-color: aquamarine;
+}
+
+.boxScore:nth-child(2) {
+  background-color: lightgray;
+}
+
+.boxScore:nth-child(3) {
+  background-color: #e6cc3b;
+}
+
