@@ -3,6 +3,7 @@
   margin: 0;
   font-family: 'Roboto', sans-serif;
   color: white;
+  box-sizing: border-box;
 }
 
 .mainContainer{
@@ -101,13 +102,24 @@
   grid-gap: 1.5%;
 }
 
-
 .gameBox {
+  /* display: grid; */
+  /* align-content: center;
+  justify-content: center; */
+  background-color: #0d1022;
+  border-radius: 15px;
+  position: relative;         
+}
+
+.gameBox p {
+  height: 100%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
   display: grid;
   align-content: center;
   justify-content: center;
-  background-color: #0d1022;
-  border-radius: 15px;
+  font-size: 2em;
 }
 
 /* scoresContainer*/

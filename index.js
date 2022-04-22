@@ -1,11 +1,19 @@
 const buttonX = document.querySelector('#buttonX');
 const buttonO = document.querySelector('#buttonO');
-const buttonPad = document.querySelectorAll('.gameBox')
+const buttonPad = document.querySelectorAll('.gameBoxPad')
 const winCombinations = ["123", "456", "789", "147", "258", "369", "159", "357"];
-// const winCombinations = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
 
 let player
 let playerShots = []
+
+// Functions
+function setPlayer(choose) {
+  player = choose
+}
+
+function usePlayer() {
+  return player
+}
 
 function checkCombination(winCombinations, formatString) {
   for (combination of winCombinations) {
@@ -17,7 +25,7 @@ function checkCombination(winCombinations, formatString) {
 
 function gameLogic(shots) {
   let formatString = shots.sort().join('')
-  console.log(formatString)
+  // console.log(formatString)
   if (formatString.length === 3) {
     checkCombination(winCombinations, formatString)
   } else {
@@ -31,21 +39,28 @@ function gameLogic(shots) {
   }
 }
 
+// DOM events
 buttonX.addEventListener('click', (e) => {
   buttonO.setAttribute('disabled', 'disabled');
   player = 'X';
+  setPlayer('X')
 })
 
 buttonO.addEventListener('click', (e) => {
   buttonX.setAttribute('disabled', 'disabled');
   player = 'O';
+  setPlayer('O')
 })
 
 buttonPad.forEach(button => {
   button.addEventListener('click', (e) => {
+    console.log(usePlayer())
+    e.target.innerText = usePlayer()
     playerShots.push(e.target.getAttribute('value'))
     if (playerShots.length >= 3) {
       gameLogic(playerShots)
     }
   })
 })
+
+console.log(buttonPad)
