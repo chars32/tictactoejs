@@ -2,17 +2,26 @@ const buttonX = document.querySelector('#buttonX');
 const buttonO = document.querySelector('#buttonO');
 const buttonPad = document.querySelectorAll('.gameBoxPad')
 const winCombinations = ["123", "456", "789", "147", "258", "369", "159", "357"];
+const idsPads = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 
-let player
+let optionChosen = {}
 let playerShots = []
 
-// Functions
-function setPlayer(choose) {
-  player = choose
-}
+let option = {}
 
-function usePlayer() {
-  return player
+// Functions
+function setOptions(option) {
+  if (option === 'X') {
+    optionChosen = {
+      player: 'X',
+      computer: 'O'
+    }
+  } else {
+    optionChosen = {
+      player: 'O',
+      computer: 'X'
+    }
+  }
 }
 
 function checkCombination(winCombinations, formatString) {
@@ -42,25 +51,34 @@ function gameLogic(shots) {
 // DOM events
 buttonX.addEventListener('click', (e) => {
   buttonO.setAttribute('disabled', 'disabled');
-  player = 'X';
-  setPlayer('X')
+  setOptions('X')
 })
 
 buttonO.addEventListener('click', (e) => {
   buttonX.setAttribute('disabled', 'disabled');
-  player = 'O';
-  setPlayer('O')
+  setOptions('O')
 })
 
 buttonPad.forEach(button => {
   button.addEventListener('click', (e) => {
-    console.log(usePlayer())
-    e.target.innerText = usePlayer()
-    playerShots.push(e.target.getAttribute('value'))
-    if (playerShots.length >= 3) {
-      gameLogic(playerShots)
+    let valuePad = e.target.getAttribute('value')
+    e.target.innerText = optionChosen.player
+    idsPads.splice(idsPads.indexOf(valuePad), 1)
+    // pc
+    const random = Math.floor(Math.random() * idsPads.length);
+    for (button of buttonPad) {
+      if (button.getAttribute('value') == idsPads[random]) {
+        button.innerText = optionChosen.computer
+        idsPads.splice(idsPads.indexOf(idsPads[random]), 1)
+        break
+      }
     }
+    // idsPads.splice(random, 1)
+    // playerShots.push(e.target.getAttribute('value'))
+    // if (playerShots.length >= 3) {
+    //   gameLogic(playerShots)
+    // }
   })
 })
 
-console.log(buttonPad)
+// console.log(buttonPad)
