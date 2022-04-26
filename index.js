@@ -2,11 +2,7 @@ const buttonX = document.querySelector('#buttonX');
 const buttonO = document.querySelector('#buttonO');
 const buttonPad = document.querySelectorAll('.gameBoxPad')
 const winCombinations = ["123", "456", "789", "147", "258", "369", "159", "357"];
-<<<<<<< HEAD
 const idsPads = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
-=======
-const idPads = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
->>>>>>> 22e2db0384e86f742c41cfed641b0573ca932622
 
 let optionChosen = {}
 let playerShots = []
@@ -79,7 +75,6 @@ buttonO.addEventListener('click', (e) => {
 
 buttonPad.forEach(button => {
   button.addEventListener('click', (e) => {
-<<<<<<< HEAD
     let valuePad = e.target.getAttribute('value')
     e.target.innerText = optionChosen.player
     idsPads.splice(idsPads.indexOf(valuePad), 1)
@@ -91,14 +86,6 @@ buttonPad.forEach(button => {
         idsPads.splice(idsPads.indexOf(idsPads[random]), 1)
         break
       }
-=======
-    removeId(e.target.getAttribute('value'))
-    cpuTurn()
-    e.target.innerText = usePlayer()
-    playerShots.push(e.target.getAttribute('value'))
-    if (playerShots.length >= 3) {
-      gameLogic(playerShots)
->>>>>>> 22e2db0384e86f742c41cfed641b0573ca932622
     }
     // idsPads.splice(random, 1)
     // playerShots.push(e.target.getAttribute('value'))
