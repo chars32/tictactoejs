@@ -78,20 +78,21 @@ buttonPad.forEach(button => {
     let valuePad = e.target.getAttribute('value')
     e.target.innerText = optionChosen.player
     idsPads.splice(idsPads.indexOf(valuePad), 1)
-    // pc
+    // pcTurn
     const random = Math.floor(Math.random() * idsPads.length);
+    const padRandom = idsPads[random]
     for (button of buttonPad) {
-      if (button.getAttribute('value') == idsPads[random]) {
+      if (button.getAttribute('value') == padRandom) {
         button.innerText = optionChosen.computer
         idsPads.splice(idsPads.indexOf(idsPads[random]), 1)
-        break
       }
     }
-    // idsPads.splice(random, 1)
-    // playerShots.push(e.target.getAttribute('value'))
-    // if (playerShots.length >= 3) {
-    //   gameLogic(playerShots)
-    // }
+    playerShots.push(e.target.getAttribute('value'))
+    console.log(playerShots)
+    if (playerShots.length >= 3) {
+      // gameLogic(playerShots)
+      console.log('mayor que 3')
+    }
   })
 })
 
