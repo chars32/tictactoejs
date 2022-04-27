@@ -24,8 +24,8 @@ function setOptions(option) {
   }
 }
 
-function checkCombination(winCombinations, formatString) {
-  for (combination of winCombinations) {
+function checkCombination(formatString) {
+  for (let combination of winCombinations) {
     if (formatString.includes(combination)) {
       console.log("win")
     }
@@ -34,9 +34,8 @@ function checkCombination(winCombinations, formatString) {
 
 function gameLogic(shots) {
   let formatString = shots.sort().join('')
-  // console.log(formatString)
   if (formatString.length === 3) {
-    checkCombination(winCombinations, formatString)
+    checkCombination(formatString)
   } else {
     let diference = parseInt(formatString[1]) - parseInt(formatString[0])
     let secondNumber = parseInt(formatString[0]) + diference
@@ -44,22 +43,8 @@ function gameLogic(shots) {
 
     let differenceString = formatString[0] + secondNumber.toString() + thirdNumber.toString()
 
-    checkCombination(winCombinations, differenceString)
+    checkCombination(differenceString)
   }
-}
-
-function removeId(id) {
-  for (element of idPads) {
-    if (element === id) {
-      idPads.splice(idPads.indexOf(id), 1)
-    }
-  }
-}
-
-function cpuTurn() {
-  const random = Math.floor(Math.random() * idPads.length)
-  removeId(random.toString())
-  console.log(idPads)
 }
 
 // DOM events
@@ -75,9 +60,11 @@ buttonO.addEventListener('click', (e) => {
 
 buttonPad.forEach(button => {
   button.addEventListener('click', (e) => {
+    // playerTurn
     let valuePad = e.target.getAttribute('value')
     e.target.innerText = optionChosen.player
     idsPads.splice(idsPads.indexOf(valuePad), 1)
+    playerShots.push(e.target.getAttribute('value'))
     // pcTurn
     const random = Math.floor(Math.random() * idsPads.length);
     const padRandom = idsPads[random]
@@ -87,13 +74,8 @@ buttonPad.forEach(button => {
         idsPads.splice(idsPads.indexOf(idsPads[random]), 1)
       }
     }
-    playerShots.push(e.target.getAttribute('value'))
-    console.log(playerShots)
     if (playerShots.length >= 3) {
-      // gameLogic(playerShots)
-      console.log('mayor que 3')
+      gameLogic(playerShots)
     }
   })
 })
-
-// console.log(buttonPad)
